@@ -5,15 +5,23 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import store from '@/store/store'
+import {sync} from 'vuex-router-sync'
+import Login from '@/components/Login.vue'
+import Register from '@/components/Register.vue'
+import PageHeader from '@/components/Header.vue'
 
 Vue.config.productionTip = false
+
+sync(store, router)
 
 Vue.use(Vuetify)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
-  components: { App }
+  components: { App, Login, Register, PageHeader }
 })
