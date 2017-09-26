@@ -14,10 +14,11 @@
 
 <script>
 import PageHeader from '@/components/Header.vue'
+import Index from '@/components/Index.vue'
 export default {
   name: 'app',
   components: {
-    PageHeader
+    PageHeader, Index
   }
 }
 </script>

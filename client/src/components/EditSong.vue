@@ -1,0 +1,128 @@
+<template>
+  <v-layout>
+    <v-flex xs5>
+      <panel title="Song Metadata">
+        <v-text-field
+          label="Title"
+          type="text"
+          required
+          :rules="[rules.required]"
+          v-model="song.title"
+        ></v-text-field>
+        <v-text-field
+          label="Artist"
+          type="text"
+          :rules="[rules.required]"
+          v-model="song.artist"
+        ></v-text-field>
+        <v-text-field
+          label="Genre"
+          type="text"
+          :rules="[rules.required]"
+          v-model="song.genre"
+        ></v-text-field>
+        <v-text-field
+          label="Album"
+          type="text"
+          :rules="[rules.required]"
+          v-model="song.album"
+        ></v-text-field>
+        <v-text-field
+          label="Album Image Url"
+          type="text"
+          :rules="[rules.required]"
+          v-model="song.albumImageUrl"
+        ></v-text-field>
+        <v-text-field
+          label="Youtube Id"
+          type="text"
+          :rules="[rules.required]"
+          v-model="song.youtubeId"
+        ></v-text-field>
+      </panel>
+    </v-flex>
+
+    <v-flex xs7>
+      <panel title="Song Structure" class="ml-2">
+        <v-text-field
+          label="Tab"
+          multi-line
+          :rules="[rules.required]"
+          v-model="song.tab"
+        ></v-text-field>
+        <v-text-field
+          label="Lyrics"
+          multi-line
+          :rules="[rules.required]"
+          v-model="song.lyrics"
+        ></v-text-field>
+      </panel>
+      <div class="error">{{error}}</div>
+      <v-btn @click="save"  class="cyan white--text">
+        Save Song
+      </v-btn>
+    </v-flex>
+  </v-layout>  
+</template>
+
+<script>
+import SongsService from '@/services/SongsService'
+import Panel from '@/components/Panel'
+export default {
+  data () {
+    return {
+      song: {
+        title: '',
+        artist: '',
+        genre: '',
+        album: '',
+        albumImageUrl: '',
+        youtubeId: '',
+        tab: '',
+        lyrics: ''
+      },
+      error: null,
+      rules: {
+        required: (value) => !!value || 'Required'
+      }
+    }
+  },
+  components: {
+    Panel
+  },
+  methods: {
+    async save () {
+      this.error = null
+      const areAllFieldsFilledIn = Object
+      .keys(this.song)
+      .every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please Fill in the Fields'
+        return
+      }
+      const songId = this.$store.state.route.params.songId
+      try {
+        await SongsService.put(this.song)
+        this.$router.push({
+          name: 'song',
+          params: {
+            songId: songId
+          }
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  },
+  async mounted () {
+    const songId = this.$store.state.route.params.songId
+    this.song = (await SongsService.show(songId)).data
+    console.log(songId, this.song.title)
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+</style>

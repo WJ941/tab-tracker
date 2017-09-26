@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a ExpressJS server",
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/nodemon/bin/nodemon.js src/app.js",

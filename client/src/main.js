@@ -10,12 +10,15 @@ import {sync} from 'vuex-router-sync'
 import Login from '@/components/Login.vue'
 import Register from '@/components/Register.vue'
 import PageHeader from '@/components/Header.vue'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.config.productionTip = false
 
 sync(store, router)
 
 Vue.use(Vuetify)
+// if you don't want install the component globally
+Vue.use(VueYouTubeEmbed)
 
 /* eslint-disable no-new */
 new Vue({
