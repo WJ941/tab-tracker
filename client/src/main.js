@@ -11,15 +11,15 @@ import Login from '@/components/Login.vue'
 import Register from '@/components/Register.vue'
 import PageHeader from '@/components/Header.vue'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from '@/components/globals/Panel.vue'
 
 Vue.config.productionTip = false
 
 sync(store, router)
 
 Vue.use(Vuetify)
-// if you don't want install the component globally
 Vue.use(VueYouTubeEmbed)
-
+Vue.component('panel', Panel)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

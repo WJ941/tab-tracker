@@ -4,9 +4,25 @@ const config = require('../config/config')
 module.exports = {
   async index (req, res) {
     try{
-      const songs = await song.findAll({
-        limit: 10
-      });
+      let songs = null
+      const search = req.query.search
+      if( search ){
+         songs = await song.findAll({
+          where: {
+            $or: [
+              'title', 'artist', 'genre', 'album'
+            ].map(key => ({
+              [key]: {
+                $like: `%${search}%`
+              } 
+            }))
+          }
+        });
+      } else {
+        songs = await song.findAll({
+          limit: 10
+        });
+      }
       res.status(200).send(songs)
     } catch(err){
       res.status(500).send({error:'an error occured trying to fetch the songs'});

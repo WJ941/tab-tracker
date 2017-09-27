@@ -22,7 +22,6 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Panel'
 export default {
   name: 'login',
   data () {
@@ -47,9 +46,6 @@ export default {
         alert('error')
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>

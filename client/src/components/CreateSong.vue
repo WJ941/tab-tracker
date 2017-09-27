@@ -67,7 +67,6 @@
 
 <script>
 import SongsService from '@/services/SongsService'
-import Panel from '@/components/Panel'
 export default {
   data () {
     return {
@@ -86,9 +85,6 @@ export default {
         required: (value) => !!value || 'Required'
       }
     }
-  },
-  components: {
-    Panel
   },
   methods: {
     async createSong () {

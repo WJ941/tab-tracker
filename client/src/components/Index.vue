@@ -1,21 +1,11 @@
 <template>
-  <h1>TabTracker</h1>
+  <h1>Tab Tracker</h1>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
-  methods: {
-    navigateTo: function (route) {
-      this.$router.push(route)
-    }
-  }
 }
 </script>
 
 <style scoped>
-
 </style>

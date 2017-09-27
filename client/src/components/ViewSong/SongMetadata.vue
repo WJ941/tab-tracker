@@ -12,12 +12,13 @@
       {{song.genre}}
       </div>
       <v-btn
-        @click="navigateTo({
+        tag="button"
+        :to="{
           name:'edit-song',
           params:{
             songId:song.id
           }
-        })"
+        }"
         class="cyan white--text">
         Edit Song
       </v-btn>
@@ -33,19 +34,10 @@
 
 <script>
 
-import Panel from '@/components/Panel'
 export default {
   props: [
     'song'
-  ],
-  methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
-  },
-  components: {
-    Panel
-  }
+  ]
 }
 </script>
 
