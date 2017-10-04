@@ -3,7 +3,7 @@
     <v-toolbar-title >
       <router-link 
       :to="{
-        name: 'index'
+        name: 'songs'
       }"
       class="white--text">
         TabTracker
@@ -61,7 +61,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'index'
+        name: 'songs'
       })
     }
   }

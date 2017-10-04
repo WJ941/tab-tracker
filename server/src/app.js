@@ -11,7 +11,10 @@ app.use( morgan( 'combined' ) );
 app.use( bodyParser.json() );
 app.use( cors() );
 
+
+
 require('./routes')(app);
+require('./passport');
 
 sequelize.sync({force:false})
   .then(() => {

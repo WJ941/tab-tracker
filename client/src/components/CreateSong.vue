@@ -57,7 +57,7 @@
           v-model="song.lyrics"
         ></v-text-field>
       </panel>
-      <div class="error">{{error}}</div>
+      <div class="dange-alert">{{error}}</div>
       <v-btn @click="createSong"  class="cyan white--text">
         Create Song
       </v-btn>

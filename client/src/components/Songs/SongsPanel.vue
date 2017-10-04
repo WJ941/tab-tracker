@@ -53,7 +53,6 @@ export default {
       immediate: true,
       async handler (value) {
         this.songs = (await SongsService.index(value)).data
-        console.log(value)
       }
     }
   }

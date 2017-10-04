@@ -31,7 +31,6 @@ export default {
       immediate: true,
       handler (value) {
         this.search = value
-        console.log(value)
       }
     }
   }

@@ -37,4 +37,7 @@ export default {
 a {
   text-decoration: none;
 }
+.danger-alert {
+  color: #f00;
+}
 </style>

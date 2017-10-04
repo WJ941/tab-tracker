@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Index from '@/components/Index'
 import Songs from '@/components/Songs/Index'
 import CreateSong from '@/components/CreateSong'
 import ViewSong from '@/components/ViewSong/Index'
@@ -12,9 +11,8 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/index',
-      name: 'index',
-      component: Index
+      path: '*',
+      redirect: 'songs'
     },
     {
       path: '/register',
