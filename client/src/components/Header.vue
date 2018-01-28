@@ -1,6 +1,6 @@
 <template>
   <v-toolbar fixed class="cyan">
-    <v-toolbar-title >
+    <v-toolbar-title>
       <router-link 
       :to="{
         name: 'songs'
